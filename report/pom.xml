@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jacoco-coverage</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>report</artifactId>
+  <name>Aggregate Report</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                  <executions>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+             <dependencies>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-a</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-b</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-c</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-c1</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+             </dependencies>
+    
+</project>
