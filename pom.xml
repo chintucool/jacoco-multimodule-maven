@@ -119,26 +119,28 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>module-a</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>module-b</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>module-c</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>module-c1</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+             <dependencies>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-a</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-b</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-c</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+                 <dependency>
+                     <groupId>org.example</groupId>
+                     <artifactId>module-c1</artifactId>
+                     <version>1.0-SNAPSHOT</version>
+                 </dependency>
+             </dependencies>
+    </dependencyManagement>
 </project>
