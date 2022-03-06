@@ -26,7 +26,7 @@ public class CTest {
 
     @Test
     public void a() throws Exception {
-        new A().foo();
+        new C().foo();
     }
 
 }
