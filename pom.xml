@@ -22,7 +22,7 @@
 	<sonar.language>java</sonar.language>
          <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 	<sonar.sonar.dynamicAnalysis>reuseReports</sonar.sonar.dynamicAnalysis>
-	
+	<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/module-c/module-c1/target/site/jacoco/jacoco.xml,${project.basedir}/module-a/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <coverage.threshold>0.75</coverage.threshold>
         <jacoco.fail-coverage>false</jacoco.fail-coverage>
         <jacoco.maven.plugin.version>0.8.6</jacoco.maven.plugin.version>
