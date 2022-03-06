@@ -11,11 +11,6 @@
 
     <artifactId>module-c1</artifactId>
 
-    <properties>
-        <sonar.jacoco.reportPaths>${project.basedir}/../../target/jacoco.exec</sonar.jacoco.reportPaths>
-        <sonar.jacoco.itReportPath>${project.basedir}/../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
