@@ -5,7 +5,7 @@ import org.junit.Test;
 public class CTest {
 
     String input1 = "noon";
-	App app = new C();
+	C app = new C();
 	boolean expected = true;
 
 	@Test
