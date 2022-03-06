@@ -39,10 +39,12 @@
 					<goal>cobertura</goal>
 				    </goals>
 				    <configuration>
+					<outputDirectory>target/site/cobertura</outputDirectory>
 					<formats>
 					    <format>xml</format>
 					    <format>html</format>
 					</formats>
+					<aggregate>true</aggregate>
 				    </configuration>
 				</execution>
 			    </executions>
