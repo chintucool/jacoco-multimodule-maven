@@ -11,7 +11,7 @@ pipeline{
             steps{
                     sh """
                         java -version
-                        mvn clean package jacoco:report jacoco:report-aggregate sonar:sonar 
+                        mvn clean package jacoco:report sonar:sonar 
                     """
              }
         }
