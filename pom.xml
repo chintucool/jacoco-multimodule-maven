@@ -11,7 +11,6 @@
         <module>module-a</module>
         <module>module-b</module>
         <module>module-c</module>
-        <module>report</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -80,6 +79,13 @@
                         <goals>
                             <goal>report</goal>
                             <goal>report-integration</goal>
+                        </goals>
+                    </execution>
+		<execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
                         </goals>
                     </execution>
                     <execution>
