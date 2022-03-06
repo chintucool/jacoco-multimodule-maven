@@ -18,41 +18,99 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jacoco.version>0.8.6</jacoco.version>
-        <sonar.jacoco.reportPaths>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPaths>
-        <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.language>java</sonar.language>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+	<sonar.language>java</sonar.language>
+         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+	<sonar.sonar.dynamicAnalysis>reuseReports</sonar.sonar.dynamicAnalysis>
+	
+        <coverage.threshold>0.75</coverage.threshold>
+        <jacoco.fail-coverage>false</jacoco.fail-coverage>
+        <jacoco.maven.plugin.version>0.8.6</jacoco.maven.plugin.version>
     </properties>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <executions>
-                    <execution>
-                        <id>agent-for-ut</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <append>true</append>
-                            <destFile>${sonar.jacoco.reportPaths}</destFile>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>agent-for-it</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>prepare-agent-integration</goal>
-                        </goals>
-                        <configuration>
-                            <append>true</append>
-                            <destFile>${sonar.jacoco.itReportPath}</destFile>
-                        </configuration>
-                    </execution>
-                </executions>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.maven.plugin.version}</version>
+					<configuration>
+						<excludes>
+							<exclude>**/*Test.*</exclude>
+							<exclude>**/*Mock.*</exclude>
+							<exclude>**/Mock*.*</exclude>
+							<exclude>**/*Application.*</exclude>
+							<exclude>**/test/**</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<id>jacoco-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>jacoco-agent-integration</id>
+							<goals>
+								<goal>prepare-agent-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>jacoco-site</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>report</goal>
+								<goal>report-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-check</id>
+							<goals>
+								<goal>check</goal>
+							</goals>
+							<configuration>
+								<haltOnFailure>${jacoco.fail-coverage}</haltOnFailure>
+								<rules>
+									<rule>
+										<element>CLASS</element>
+										<limits>
+											<limit>
+												<counter>INSTRUCTION</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+											<limit>
+												<counter>CLASS</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+											<limit>
+												<counter>METHOD</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+											<limit>
+												<counter>BRANCH</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+											<limit>
+												<counter>COMPLEXITY</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+											<limit>
+												<counter>LINE</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>${coverage.threshold}</minimum>
+											</limit>
+										</limits>
+									</rule>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
             </plugin>
         </plugins>
     </build>
