@@ -17,24 +17,22 @@ pipeline{
                         unset JAVA_HOME
                     """
             }
-           post {
-                always {
-                    cobertura(
-                        autoUpdateHealth: false,
-                        autoUpdateStability: false,
-                        coberturaReportFile: 'target/site/cobertura/coverage.xml',
-                        enableNewApi: true,
-                        failNoReports: false,
-                        failUnhealthy: false,
-                        failUnstable: false,
-                        maxNumberOfBuilds: 10,
-                        onlyStable: false,
-                        sourceEncoding: 'ASCII',
-                        zoomCoverageChart: false
-                   )
-                }
-           }
         }
-         
+         stage('Jacoco coverage') {
+            steps {
+                jacoco(
+                        execPattern: '**/jacoco.exec',
+                        classPattern: '**/classes',
+                        sourcePattern: '**/src/main/java',
+                        minimumBranchCoverage: '75', 
+                        minimumClassCoverage: '75', 
+                        minimumComplexityCoverage: '75', 
+                        minimumInstructionCoverage: '0.75', 
+                        minimumLineCoverage: '75', 
+                        minimumMethodCoverage: '75'
+                        inclusionPattern: '**/*.java'
+                )
+            }
+        }
     }
 }
