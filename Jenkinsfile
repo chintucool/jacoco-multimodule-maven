@@ -29,7 +29,7 @@ pipeline{
                         minimumComplexityCoverage: '75', 
                         minimumInstructionCoverage: '0.75', 
                         minimumLineCoverage: '75', 
-                        minimumMethodCoverage: '75'
+                        minimumMethodCoverage: '75',
                         inclusionPattern: '**/*.java'
                 )
             }
